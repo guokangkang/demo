@@ -1,0 +1,38 @@
+version: 1
+cron:
+ - name: "fetch-account-last_month"
+   url: "/queue/push_account?month=last_month"
+   schedule: "10 16 1-10 * *" # Beijing Time: 00:10
+ - name: "fetch-bills-yesterday"
+   url: "/queue/push_bills"
+   schedule: "10 20 * * *" # Beijing Time: 04:10
+ - name: "fetch-breakdowns-last7days"
+   url: "/queue/push_breakdowns?days=3"
+   schedule: "40 20 * * *" # Beijing Time: 04:40
+ # - name: "fetch-review-yesterday-1"
+ #   url: "/queue/push_review?date=yesterday"
+ #   schedule: "10 20 * * *" # Beijing Time: 04:10
+ - name: "fetch-account-last7days"
+   url: "/queue/push_account?days=7"
+   schedule: "10 22 * * *" # Beijing Time: 06:10
+ # - name: "fetch-account-last3days"
+ #   url: "/queue/push_account?days=3"
+ #   schedule: "10 4 * * 1-5" # Beijing Time: 12:10
+ - name: "fetch-review-yesterday-2"
+   url: "/queue/push_review?days=7"
+   schedule: "10 4 * * *" # Beijing Time: 12:10
+ - name: "fetch-account-last2days"
+   url: "/queue/push_account?days=3"
+   schedule: "10 8 * * 1-5" # Beijing Time: 16:10
+ - name: "fetch-account-thismonth"
+   url: "/queue/push_account?month=this_month"
+   schedule: "10 12 * * *" # Beijing Time: 20:10
+ # - name: "fetch-ad-comments"
+ #   url: "/queue/push_comment"
+ #   schedule: "10 2 * * 6"  # Beijing Time: 10:10,Saturday
+ # - name: "fetch-breakdowns"
+ #   url: "queue/push_breakdowns?month=this_month"
+ #   schedule: "10 2 * * 7"  # Beijing Time: 10:10,Sunday
+ - name: "dynamodb2redshfit"
+   url: "/queue/push_redshift"
+   schedule: "0 0,5,9 * * *"    # Beijing Time: 08:00,13:00,17:00
